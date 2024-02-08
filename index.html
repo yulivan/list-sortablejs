@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List sortablejs</title>
+    <!-- sortable js -->
+    <script src="https://sortablejs.github.io/Sortable/Sortable.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div id="items">
+        <div class="box">item 1</div>
+        <div class="box">item 2</div>
+        <div class="box">item 3</div>
+        <div class="box">item 4</div>
+    </div>
+
+    <script>
+        let el = document.getElementById('items');
+        if(el){
+            Sortable.create(
+            el,
+            {
+                animation: 150,
+                handle: '.box',
+                onEnd: function (event){
+                    // initial position index
+                    let selectedIndex = event.oldIndex + 1;
+                    // new position
+                    let newIndex = event.newIndex + 1;
+                    // if the position is different
+                    if(selectedIndex != newIndex){
+                        console.log('from the position', selectedIndex);
+                        console.log('To', newIndex);
+
+                    }
+                }             
+            }
+            );
+        }
+    </script>
+
+</body>
+</html>
